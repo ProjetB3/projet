@@ -1,0 +1,26 @@
+dépouillement
+
+chercher site condorcet
+
+Base de donnée simple
+Algorithmie fonctionnelle (majoritaire ou condorcet)
+Pas d'interface
+
+____
+faire l'analyse du vmu1
++maj cahier des charges
++maj sujet
+
+analyser morceaux de codes utilisés
+développement -> test -> production
+Wamp -> serveur test -> internet
+Wamp donc versionning github
+
+Mettre en place git groupe
+Mettre en place BDD simple (pourquoi BDD ? Simplicité et liaisons)
+Jmerise
+
+expliquer problème vote vmu2
+! anonymat (+ démonstration)
+
+Remplir BDD (10 votes (cas spécial condorcet))
