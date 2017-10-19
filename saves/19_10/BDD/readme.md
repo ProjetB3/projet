@@ -7,3 +7,6 @@ CANDIDATS :
   - Libelle
   
   
+VOTANTS :
+- Id
+- Vote (à saisir par l'utilisateur pour le moment)
