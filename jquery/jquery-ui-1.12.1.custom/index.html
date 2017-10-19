@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery UI Example Page</title>
+	<link href="bootstrap.css" rel="stylesheet">
+	<link href="jquery-ui.css" rel="stylesheet">
+	<link href="/resources/demos/style.css" rel="stylesheet">
+
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="jquery.min.js"><\/script>')</script>
+    <script src="bootstrap.min.js"></script>
+	
+	<style>
+	body{
+		font-family: "Trebuchet MS", sans-serif;
+		margin: 50px;
+	}
+	.demoHeaders {
+		margin-top: 2em;
+	}
+	#dialog-link {
+		padding: .4em 1em .4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	#dialog-link span.ui-icon {
+		margin: 0 5px 0 0;
+		position: absolute;
+		left: .2em;
+		top: 50%;
+		margin-top: -8px;
+	}
+	#icons {
+		margin: 0;
+		padding: 0;
+	}
+	#icons li {
+		margin: 2px;
+		position: relative;
+		padding: 4px 0;
+		cursor: pointer;
+		float: left;
+		list-style: none;
+	}
+	#icons span.ui-icon {
+		float: left;
+		margin: 0 4px;
+	}
+	.fakewindowcontain .ui-widget-overlay {
+		position: absolute;
+	}
+	select {
+		width: 200px;
+	}
+	</style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse" role="navigation">
+ <div class="container-fluid">
+        <div id="navbar" class="navbar-collapse collapse">
+		  <ul class="nav navbar-nav">
+            <li class='active'><a href="index.html">Accueil</a></li>
+			<li><a href="about.html">À propos de </a></li>
+          </ul>
+          <form class="navbar-form navbar-right"> <!--style="margin-right: -190px;"--> 
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Mot de passe" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+		</nav>
+      </div>
+</nav>
+<h1>Welcome to jQuery UI!</h1>
+
+<div class="ui-widget">
+	<p>Cette page sert d'introduction aux widgets et interractions disponible grâce à jQuery.</p>
+</div>
+
+<h1>Les composants:</h1>
+
+
+<!-- Accordion -->
+<h2 class="demoHeaders">Accordéon</h2>
+<div id="accordion">
+	<h3>First</h3>
+	<div>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</div>
+	<h3>Second</h3>
+	<div>Phasellus mattis tincidunt nibh.</div>
+	<h3>Third</h3>
+	<div>Nam dui erat, auctor a, dignissim quis.</div>
+</div>
+
+
+
+<!-- Autocomplete -->
+<h2 class="demoHeaders">Autocomplete</h2>
+
+  <script>
+  $( function() {
+    var names = [ "jquery","c++", "facebook", "youtube", "développez.com" ];
+ 
+    var accentMap = {
+      "á": "a",
+      "ö": "o",
+	  "é": "e"
+    };
+    var normalize = function( term ) {
+      var ret = "";
+      for ( var i = 0; i < term.length; i++ ) {
+        ret += accentMap[ term.charAt(i) ] || term.charAt(i);
+      }
+      return ret;
+    };
+ 
+    $( "#autocomp" ).autocomplete({
+      source: function( request, response ) {
+        var matcher = new RegExp( $.ui.autocomplete.escapeRegex( request.term ), "i" );
+        response( $.grep( names, function( value ) {
+          value = value.label || value.value || value;
+          return matcher.test( value ) || matcher.test( normalize( value ) );
+        }) );
+      }
+    });
+  } );
+  </script>
+	<body>
+	<div class="ui-widget">
+	  <form>
+		  <label for="autocomp">Autocomplete: </label>
+		  <input id="autocomp">
+	  </form>
+	</div>
+	</body>
+
+
+<!-- Button -->
+<h2 class="demoHeaders">Bouton</h2>
+<button id="button">Un bouton</button>
+<button id="button-icon">An icon-only button</button>
+
+
+
+<!-- Checkboxradio -->
+<h2 class="demoHeaders">Checkboxradio</h2>
+<form style="margin-top: 1em;">
+	<div id="radioset">
+		<input type="radio" id="radio1" name="radio"><label for="radio1">Choice 1</label>
+		<input type="radio" id="radio2" name="radio" checked="checked"><label for="radio2">Choice 2</label>
+		<input type="radio" id="radio3" name="radio"><label for="radio3">Choice 3</label>
+	</div>
+</form>
+
+
+
+<!-- Controlgroup -->
+<h2 class="demoHeaders">Controlgroup</h2>
+<fieldset>
+	<legend>Rental Car</legend>
+	<div id="controlgroup">
+		<select id="car-type">
+			<option>Compact car</option>
+			<option>Midsize car</option>
+			<option>Full size car</option>
+			<option>SUV</option>
+			<option>Luxury</option>
+			<option>Truck</option>
+			<option>Van</option>
+		</select>
+		<label for="transmission-standard">Standard</label>
+		<input type="radio" name="transmission" id="transmission-standard">
+		<label for="transmission-automatic">Automatic</label>
+		<input type="radio" name="transmission" id="transmission-automatic">
+		<label for="insurance">Insurance</label>
+		<input type="checkbox" name="insurance" id="insurance">
+		<label for="horizontal-spinner" class="ui-controlgroup-label"># of cars</label>
+		<input id="horizontal-spinner" class="ui-spinner-input">
+		<button>Book Now!</button>
+	</div>
+</fieldset>
+
+
+
+<!-- Tabs -->
+<h2 class="demoHeaders">Tabs</h2>
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">First</a></li>
+		<li><a href="#tabs-2">Second</a></li>
+		<li><a href="#tabs-3">Third</a></li>
+	</ul>
+	<div id="tabs-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+	<div id="tabs-2">Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</div>
+	<div id="tabs-3">Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
+</div>
+
+
+
+<h2 class="demoHeaders">Boite de dialogue</h2>
+<p>
+	<button id="dialog-link" class="ui-button ui-corner-all ui-widget">
+		<span class="ui-icon ui-icon-newwin"></span>Ouvrir le dialogue
+	</button>
+</p>
+
+<!-- ui-dialog -->
+<div id="dialog" title="Dialogue">
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+
+
+
+
+
+<!-- Slider -->
+<h2 class="demoHeaders">Slider</h2>
+	<script>
+		  $( function() {
+			$( "#slider" ).slider();
+		  } );
+	</script>
+
+	<body>
+		<div id="slider"></div> 
+	</body>
+
+
+
+<!-- Datepicker -->
+<h2 class="demoHeaders">Datepicker</h2>
+
+
+	<script>
+	$.datepicker.setDefaults($.datepicker.regional["fr"]);
+	  $( function() {
+		$( "#datepicker" ).datepicker();
+	  } );
+	  </script>
+	<body>
+		<p>Date: <input type="text" id="datepicker"></p>
+	</body>
+
+
+
+<!-- Progressbar -->
+<h2 class="demoHeaders">Progressbar</h2>
+	<script>
+	  $( function() {
+		$( "#progressbar" ).progressbar({
+		  value: 66
+		});
+	  } );
+	  </script>
+	<body>
+		<div id="progressbar"></div>
+	</body>
+
+
+<!-- Selectmenu -->
+<h2 class="demoHeaders">Selectmenu</h2>
+	<select id="selectmenu">
+		<option>Slower</option>
+		<option>Slow</option>
+		<option selected="selected">Medium</option>
+		<option>Fast</option>
+		<option>Faster</option>
+	</select>
+
+
+
+<!-- Spinner -->
+<h2 class="demoHeaders">Spinner</h2>
+
+  <script>
+	  $( function() {
+		var spinner = $( "#spinner" ).spinner();
+	 
+		$( "#disable" ).on( "click", function() {
+		  if ( spinner.spinner( "option", "disabled" ) ) {
+			spinner.spinner( "enable" );
+		  } else {
+			spinner.spinner( "disable" );
+		  }
+		});
+		$( "#destroy" ).on( "click", function() {
+		  if ( spinner.spinner( "instance" ) ) {
+			spinner.spinner( "destroy" );
+		  } else {
+			spinner.spinner();
+		  }
+		});
+		$( "#getvalue" ).on( "click", function() {
+		  alert( spinner.spinner( "value" ) );
+		});
+		$( "#setvalue" ).on( "click", function() {
+		  spinner.spinner( "value", 10 );
+		});
+	 
+		$( "button" ).button();
+	  } );
+  </script>
+</head>
+<body>
+ 
+<p>
+  <label for="spinner">Select a value:</label>
+  <input id="spinner" name="value">
+</p>
+ 
+<p>
+  <button id="disable">Toggle disable/enable</button>
+  <button id="destroy">Toggle widget</button>
+</p>
+ 
+<p>
+  <button id="getvalue">Get value</button>
+  <button id="setvalue">Set value to 10</button>
+</p>
+ 
+ 
+</body>
+
+
+
+<!-- Menu -->
+<h2 class="demoHeaders">Menu</h2>
+	<ul style="width:100px;" id="menu">
+		<li><div>Item 1</div></li>
+		<li><div>Item 2</div></li>
+		<li><div>Item 3</div>
+			<ul>
+				<li><div>Item 3-1</div></li>
+				<li><div>Item 3-2</div></li>
+				<li><div>Item 3-3</div></li>
+				<li><div>Item 3-4</div></li>
+				<li><div>Item 3-5</div></li>
+			</ul>
+		</li>
+		<li><div>Item 4</div></li>
+		<li><div>Item 5</div></li>
+	</ul>
+
+<!-- Resizable and draggable image -->
+<h2 class="demoHeaders">Resizable and draggable Image</h2>
+
+<!-- Les deux propriétés ayant un ID différent, il est nécessaire d'en appliquer une à l'image et de créer un div contenant l'image pour appliquer la seconde. -->
+	<div id="draggable">
+		<img id="resizebleImage" src="C:\Users\Amélie\Pictures\chat-domestique.jpg" height="135px"> 
+	</div>
+
+
+	<style>
+		  #resizable { width: 150px; height: 150px; padding: 0.5em; }
+		  #resizable h3 { text-align: center; margin: 0; }
+	</style>
+
+	<script>
+		$( function() {
+			$( 'img' ).resizable();
+		} );
+	</script>
+		  
+		  
+	<script type="text/javascript">
+		$(function() {
+			$("#draggable").draggable();
+		});
+	</script>
+			
+
+
+<!-- Sortable -->
+<h2 class="demoHeaders">Sortable</h2>
+<p>Placer les animaux de compagnie suivants dans votre ordre de préférence :</p>
+
+	<style>
+	  #sortable { list-style-type: none; margin: 0; padding: 0; width: 20%; }
+	  #sortable li { margin: 0 5px 5px 5px; padding: 5px; font-size: 1.4em;}
+	  html>body #sortable li { height: 1.5em; line-height: 1.2em; }
+	  .ui-state-highlight { height: 1.5em; line-height: 1.2em; }
+	</style>
+
+	<script>
+	  $( function() {
+		$( "#sortable" ).sortable({
+		  placeholder: "ui-state-highlight"
+		});
+		$( "#sortable" ).disableSelection();
+	  } );
+	</script>
+
+	<ul id="sortable">
+	  <li class="ui-state-default">Chien</li>
+	  <li class="ui-state-default">Rat</li>
+	  <li class="ui-state-default">Serpent</li>
+	  <li class="ui-state-default">Chat</li>
+	  <li class="ui-state-default">Poisson rouge</li>
+	  <li class="ui-state-default">Lapin</li>
+	  <li class="ui-state-default">Hamster</li>
+	</ul>
+ 
+ <!-- Selectable -->
+<h2 class="demoHeaders">Selectable</h2>
+
+	<style>
+	  #feedback { font-size: 1.2em; }
+	  #selectable .ui-selecting { background: #FECA40; }
+	  #selectable .ui-selected { background: #F39814; color: white; }
+	  #selectable { list-style-type: none; margin: 0; padding: 0; width: 20%; }
+	  #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; }
+	</style>
+
+	<script>
+	  $( function() {
+		//var myArray = ['Chien','Chat','Cheval','Ours','Renard','Kiwi'];	// permet le stockage des informations du <ol>
+		$( "#selectable" ).selectable({
+		  stop: function() {
+			var result = $( "#select-result" ).empty();
+			$( ".ui-selected", this ).each(function() {
+			  var index = $( "#selectable li" ).index( this );
+			  result.append( ""+($(".ui-selected").text()));					// .append affiche le contenu d'une balise <p>
+				// result.append( "" + (myArray[index]);						// myArray[index] == Contenu du tableau à l'emplacement index
+			});
+		  }
+		});
+	  } );
+	</script>
+
+<body>
+ Sélectionner votre animal préféré :
+ 
+	<p id="feedback">
+		<span>Vous avez sélectionné:</span> <span id="select-result">rien</span>.
+	</p>
+ 
+	<ol id="selectable">
+	  <li class="ui-widget-content">Chien</li>
+	  <li class="ui-widget-content">Chat</li>
+	  <li class="ui-widget-content">Cheval</li>
+	  <li class="ui-widget-content">Ours</li>
+	  <li class="ui-widget-content">Renard</li>
+	  <li class="ui-widget-content">Kiwi</li>
+	</ol>
+</body>
+
+	
+<body>
+
+<script src="external/jquery/jquery.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+
+$( "#accordion" ).accordion();
+
+
+
+var availableTags = [
+	"ActionScript",
+	"AppleScript",
+	"Asp",
+	"BASIC",
+	"C",
+	"C++",
+	"Clojure",
+	"COBOL",
+	"ColdFusion",
+	"Erlang",
+	"Fortran",
+	"Groovy",
+	"Haskell",
+	"Java",
+	"JavaScript",
+	"Lisp",
+	"Perl",
+	"PHP",
+	"Python",
+	"Ruby",
+	"Scala",
+	"Scheme"
+];
+$( "#autocomplete" ).autocomplete({
+	source: availableTags
+});
+
+
+
+$( "#button" ).button();
+$( "#button-icon" ).button({
+	icon: "ui-icon-gear",
+	showLabel: false
+});
+
+
+
+$( "#radioset" ).buttonset();
+
+
+
+$( "#controlgroup" ).controlgroup();
+
+
+
+$( "#tabs" ).tabs();
+
+
+
+$( "#dialog" ).dialog({
+	autoOpen: false,
+	width: 400,
+	buttons: [
+		{
+			text: "Ok",
+			click: function() {
+				$( this ).dialog( "close" );
+			}
+		},
+		{
+			text: "Cancel",
+			click: function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	]
+});
+
+// Link to open the dialog
+$( "#dialog-link" ).click(function( event ) {
+	$( "#dialog" ).dialog( "open" );
+	event.preventDefault();
+});
+
+
+
+$( "#datepicker" ).datepicker({
+	inline: true
+});
+
+
+
+$( "#slider" ).slider({
+	range: true,
+	values: [ 17, 67 ]
+});
+
+
+
+$( "#progressbar" ).progressbar({
+	value: 20
+});
+
+
+
+$( "#spinner" ).spinner();
+
+
+
+$( "#menu" ).menu();
+
+
+
+$( "#tooltip" ).tooltip();
+
+
+
+$( "#selectmenu" ).selectmenu();
+
+
+// Hover states on the static widgets
+$( "#dialog-link, #icons li" ).hover(
+	function() {
+		$( this ).addClass( "ui-state-hover" );
+	},
+	function() {
+		$( this ).removeClass( "ui-state-hover" );
+	}
+);
+</script>
+</body>
+</html>
