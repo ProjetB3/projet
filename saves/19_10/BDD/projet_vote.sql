@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `candidats` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Libelle` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `Libelle` varchar(50) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
