@@ -9,4 +9,4 @@ CANDIDATS :
   
 VOTANTS :
 - Id
-- Vote 
+- Vote (permet un left join sur CANDIDATS.Id)
