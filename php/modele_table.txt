@@ -1,0 +1,100 @@
+DROP TABLE if exists candidat;
+CREATE TABLE candidat
+( id int PRIMARY KEY,
+ nom varchar(50));
+ 
+ INSERT INTO candidat
+ VALUES (0, 'A'),
+ (1, 'B'),
+ (2, 'C'),
+ (3, 'D'),
+ (4, 'E');
+ 
+ DROP TABLE if exists vote;
+ CREATE TABLE vote
+( id int PRIMARY KEY,
+ choix1 varchar(50),
+ choix2 varchar(50),
+ choix3 varchar(50),
+ choix4 varchar(50),
+ choix5 varchar(50));
+ 
+ -- A
+ INSERT INTO vote 
+ VALUES (0, 'A','B','C','D','E'),
+ (1, 'A','B','C','D','E'),
+ (2, 'A','B','C','D','E'),
+ (3, 'A','B','C','D','E'),
+ (4, 'A','B','C','D','E'),
+ (5, 'A','B','C','D','E'),
+ (6, 'A','B','C','D','E');
+ 
+ -- Egalité A B
+ INSERT INTO vote
+ VALUES (0, 'A','B','C','D','E'),
+ (1, 'A','B','C','D','E'),
+ (2, 'B','A','C','D','E'),
+ (3, 'B','A','C','D','E'),
+ (4, 'B','A','C','D','E'),
+ (5, 'A','B','C','D','E');
+ 
+  -- Egalité B C
+ INSERT INTO vote
+ VALUES (0, 'C','B','A','D','E'),
+ (1, 'C','B','A','D','E'),
+ (2, 'B','C','A','D','E'),
+ (3, 'B','C','A','D','E'),
+ (4, 'B','C','A','D','E'),
+ (5, 'C','B','A','D','E');
+ 
+ -- B
+ INSERT INTO vote
+ VALUES (0, 'A','B','C','D','E'),
+ (1, 'B','C','A','D','E'),
+ (2, 'C','B','A','D','E');
+ 
+ -- E
+ INSERT INTO vote
+ VALUES (0, 'A','B','C','D','E'),
+ (1, 'E','C','A','D','B'),
+ (2, 'E','B','A','D','C');
+  /**
+ -- différence C VMU1
+ INSERT INTO vote
+ VALUES (0, 'A','B','C','D','E'),
+ (1, 'E','C','A','D','B'),
+ (2, 'E','B','A','D','C');
+
+ (0, 'A','B','C','D','E'),
+ (1, 'A','C','E','B','D'),
+ (2, 'C','B','D','E','A'),
+ (3, 'B','D','E','C','A'),
+ **/
+
+ 
+ 
+ DROP TABLE if exists candidat;
+CREATE TABLE candidat
+( id int PRIMARY KEY,
+ nom varchar(50));
+ 
+ INSERT INTO candidat
+ VALUES (0, 'Chocolat'),
+ (1, 'Fraise'),
+ (2, 'Vanille'),
+ (3, 'Pistache');
+ 
+  DROP TABLE if exists vote;
+ CREATE TABLE vote
+( id int PRIMARY KEY,
+ choix1 varchar(50),
+ choix2 varchar(50),
+ choix3 varchar(50),
+ choix4 varchar(50));
+ 
+ INSERT INTO vote
+ VALUES (0, 'Fraise','Vanille','Chocolat','Pistache'),
+ (1, 'Chocolat','Fraise','Vanille','Pistache'),
+ (2, 'Vanille','Chocola','Fraise','Pistache'),
+ (3, 'Pistache','Vanille','Chocolat','Fraise'),
+ (4, 'Pistache','Vanille','Fraise','Chocolat');
